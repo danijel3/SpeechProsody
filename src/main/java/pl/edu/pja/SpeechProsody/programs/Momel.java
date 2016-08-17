@@ -77,6 +77,27 @@ public class Momel {
     }
 
     /**
+     * Convert pitch marks calculated using Praat to Momel points, without performing Momel.
+     *
+     * @param pitches sequence of pitch mark values
+     * @param skip_zeros don't put zeros into output
+     * @return sequence of time/frequency points
+     */
+    public static Vector<Point> convert(Vector<Praat.PitchMark> pitches, boolean skip_zeros) {
+        Vector<Point> ret = new Vector<Point>();
+        for (Praat.PitchMark pm : pitches) {
+
+            if (skip_zeros && pm.frequency == 0) continue;
+
+            Point p = new Point();
+            p.frequency = pm.frequency;
+            p.time = pm.time*1000;
+            ret.add(p);
+        }
+        return ret;
+    }
+
+    /**
      * Unit test...
      */
     public static void test() {
