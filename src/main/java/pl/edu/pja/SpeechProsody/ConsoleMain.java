@@ -29,6 +29,9 @@ public class ConsoleMain {
     @Parameter(names = "-t", description = "Path to tmp directory.")
     private String tmp_dir_path = "./";
 
+    @Parameter(names = "-m", description = "Skip the Momel step during computation.")
+    private boolean skip_momel = false;
+
     @Parameter(names = "-h", description = "This help.", help = true)
     private boolean help = false;
 
@@ -92,16 +95,24 @@ public class ConsoleMain {
                 }
             }
 
-            Vector<Double> pitches = Praat.pitchmarks_to_pitchstream(pitchmarks);
+            Vector<Momel.Point> momel_points;
 
-            if (debug) {
-                for (Double pitch : pitches) {
-                    System.out.print(pitch + ", ");
+            if (skip_momel)
+                momel_points = Momel.convert(pitchmarks,true);
+            else {
+
+                Vector<Double> pitches = Praat.pitchmarks_to_pitchstream(pitchmarks);
+
+                if (debug) {
+                    for (Double pitch : pitches) {
+                        System.out.print(pitch + ", ");
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+
+                momel_points = Momel.momel(pitches);
             }
 
-            Vector<Momel.Point> momel_points = Momel.momel(pitches);
 
             if (debug) {
                 for (Momel.Point point : momel_points) {

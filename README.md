@@ -31,6 +31,9 @@ Usage: <main class> [options]
        Default: false
   * -i
        Input WAV file.
+    -m
+       Skip the Momel step during computation.
+       Default: false
   * -o
        Output JSON file.
     -t
