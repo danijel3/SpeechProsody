@@ -116,7 +116,7 @@ public class ProgramPaths {
         Properties props = new Properties();
         props.load(new FileInputStream((file)));
 
-        Field[] fields = ProgramPaths.class.getFields();
+        //Field[] fields = ProgramPaths.class.getFields();
 
         for (Map.Entry<Object, Object> entry : props.entrySet()) {
 
