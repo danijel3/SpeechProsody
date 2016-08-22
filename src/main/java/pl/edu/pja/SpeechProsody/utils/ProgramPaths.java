@@ -116,8 +116,6 @@ public class ProgramPaths {
         Properties props = new Properties();
         props.load(new FileInputStream((file)));
 
-        //Field[] fields = ProgramPaths.class.getFields();
-
         for (Map.Entry<Object, Object> entry : props.entrySet()) {
 
             String name = (String) entry.getKey();
@@ -129,8 +127,6 @@ public class ProgramPaths {
                     field.set(null, val);
                 else if (field.getType() == File.class)
                     field.set(null, new File(val));
-                else
-                    continue;
             } catch (IllegalAccessException | NoSuchFieldException e) {
                 logger.error("Cannot set value for " + name, e);
             }
