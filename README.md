@@ -5,7 +5,7 @@ This project contains a simple Java wrapper which can be used to calculate INTSI
 ## Requirements
 
   * praat - from [http://www.praat.org]
-  * intsint and momel praat plugin - Google "momel_intsint.zip"
+  * intsint and momel praat plugin - [http://sldr.org/voir_depot.php?lang=en&id=31&creer_toc=oui]
   * perl
   
 Optional (not used yet):
